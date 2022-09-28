@@ -15,27 +15,43 @@ namespace DataAccess.Operations
         {
             List<City> cities = new List<City>();
 
+
+
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
 
-                SqlCommand command = new SqlCommand($"select c.[id],c.[name] from city as c where c.[name] like '{input}%'", connection);
-
                 connection.Open();
+                
+                SqlCommand command = new SqlCommand($"select c.[id],c.[name] from city as c where c.[name] ='virar'", connection);
+
+
+                //command.
 
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    City c = new City();
-                    c.id = (int)reader[0];
-                    c.name = (string)reader[1];
-
-                    cities.Add(c);
-
+                    System.Console.WriteLine($"{(int)reader[0]} \t\t {(string)reader[1]}");
                 }
 
-                connection.Close();
+                    ////command.ex
+
+                    //while (reader.Read())
+                    //{
+                    //    City c = new City();
+                    //    c.id = (int)reader[0];
+                    //    c.name = (string)reader[1];
+
+                    //    //reader.geok
+
+                    //    cities.Add(c);
+
+                    //}
+
+
+
+                    connection.Close();
 
             }
 

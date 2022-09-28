@@ -2,6 +2,8 @@
 using DataAccess.Operations;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+
 namespace D2hOperator
 {
     
@@ -25,7 +27,32 @@ namespace D2hOperator
             //    Console.WriteLine(c.name);
             //}
 
-            Console.ReadLine();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                connection.Open();
+
+                SqlCommand command = 
+                    new SqlCommand(
+                        $"select [dbo].USF_GetTotalCompalintCost(2)", 
+                        connection);
+
+
+                //command.
+
+
+                var Id = command.ExecuteScalar();
+
+                Console.WriteLine(Id);
+
+                //while (reader.Read())
+                //{
+                //    System.Console.WriteLine($"{(int)reader[0]}");
+                //}
+            }
+
+                Console.ReadLine();
         }
     }
 }

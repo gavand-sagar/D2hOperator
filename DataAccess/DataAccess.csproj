@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\USP_GET_CUSTOMER_WITH_PACKAGE.cs" />
     <Compile Include="Operations\CityOperations.cs" />
     <Compile Include="Entities\City.cs" />
+    <Compile Include="Operations\CustomerOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

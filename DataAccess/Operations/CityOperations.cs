@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DataAccess.Operations
 {
-    public class CityOperations
+    public class CityOperations : ICityOperations
     {
         private string _connectionString;
         public CityOperations(string connectionString)

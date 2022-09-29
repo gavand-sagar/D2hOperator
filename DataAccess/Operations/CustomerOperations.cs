@@ -44,5 +44,33 @@ namespace DataAccess.Operations
             }
 
         }
+
+        public UserDetails GetUserWithUsernameAndPassword(string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+
+                connection.Open();
+
+
+                SqlCommand command =
+                    new SqlCommand(
+                        $"execute [dbo].USP_GetCustomerInformationWithUsernameAndPassword '{username}','{password}'",
+                        connection);
+
+                UserDetails u = null;
+                var reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    u = new UserDetails(); 
+                    u.Name = reader.GetString(0);
+                    u.PackageName = reader.GetString(1);
+                    break;
+                }
+                connection.Close();
+                return u;
+            }
+        }
     }
 }
